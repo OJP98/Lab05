@@ -29,10 +29,13 @@ public class BaseDatos {
         emf.close();                
     }
     
-    public void recuperarTanques() {
+    public void recuperarDatos() {
+        
         Query q1 = em.createQuery("select t from Tanque t");
         ArrayList<Tanque> tanques = (ArrayList<Tanque>) q1.getResultList();
         
+        Query q2 = em.createQuery("select r from Region r");
+        ArrayList<Region> regiones = (ArrayList<Region>) q2.getResultList();        
         
     }
     

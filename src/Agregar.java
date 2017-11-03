@@ -1,3 +1,11 @@
+
+import Laboratorio05.Cilindrico;
+import Laboratorio05.Cubico;
+import Laboratorio05.Region;
+import Laboratorio05.Tanque;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  * Clase GUI con la que el usuario es introducido al programa
  * @author: Oscar Juarez - 17315; Josue Lopez Florian - 17081
@@ -6,10 +14,10 @@
  */
 
 public class Agregar extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Agregar
-     */
+    
+    public static ArrayList<Tanque> agregarTanques = new ArrayList<Tanque>();
+    public static ArrayList<Region> agregarRegiones = new ArrayList<Region>(); 
+    
     public Agregar() {
         initComponents();
     }
@@ -64,6 +72,11 @@ public class Agregar extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel1.setText("Agregar un tanque:");
@@ -71,7 +84,7 @@ public class Agregar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel3.setText("Tanque:");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1000, 1000, 1010, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1001, 1001, 1010, 1));
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel4.setText("ID:");
@@ -80,6 +93,11 @@ public class Agregar extends javax.swing.JFrame {
         jLabel5.setText("Forma:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cilindrico" , "Cubico" , "Ortogonal" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel6.setText("Dimensiones (en metros):");
@@ -88,10 +106,16 @@ public class Agregar extends javax.swing.JFrame {
         jLabel7.setText("Altura:");
 
         jLabel8.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel8.setText("Anchura:");
+        jLabel8.setText("Ancho:");
 
         jLabel9.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel9.setText("Profundidad:");
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 30.0d, 1.0d));
+
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 30.0d, 1.0d));
+
+        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 30.0d, 1.0d));
 
         jLabel10.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel10.setText("Región:");
@@ -186,6 +210,11 @@ public class Agregar extends javax.swing.JFrame {
         jSpinner14.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Regresar");
 
@@ -198,7 +227,7 @@ public class Agregar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,17 +240,17 @@ public class Agregar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jSpinner4)
                                     .addComponent(jSpinner3)
-                                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -288,15 +317,15 @@ public class Agregar extends javax.swing.JFrame {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -393,6 +422,85 @@ public class Agregar extends javax.swing.JFrame {
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+        int seleccion = jComboBox1.getSelectedIndex();
+        jSpinner4.setEnabled(true);
+        jLabel8.setText("Ancho");
+        
+        if (seleccion==0) {
+            
+            jSpinner4.setEnabled(false);
+            jLabel8.setText("Diametro");
+            
+        }
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        int seleccion = jComboBox1.getSelectedIndex();
+        
+        String M1 = jTextField1.getText();
+        String M2 = jTextField2.getText();
+        String M3 = jTextField3.getText();
+        String M4 = jTextField4.getText();
+        String M5 = jTextField5.getText();
+        String M6 = jTextField6.getText();
+        String M7 = jTextField7.getText();
+        String M8 = jTextField8.getText();
+        String M9 = jTextField9.getText();
+        String M10 = jTextField10.getText();
+        
+        int H1 = (int) jSpinner5.getValue();
+        int H2 = (int) jSpinner6.getValue();
+        int H3 = (int) jSpinner7.getValue();
+        int H4 = (int) jSpinner8.getValue();
+        int H5 = (int) jSpinner9.getValue();
+        int H6 = (int) jSpinner10.getValue();
+        int H7 = (int) jSpinner11.getValue();
+        int H8 = (int) jSpinner12.getValue();
+        int H9 = (int) jSpinner13.getValue();
+        int H10 = (int) jSpinner14.getValue();
+        
+        if (jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("") || jTextField4.getText().equals("") || jTextField5.getText().equals("") ||
+                jTextField6.getText().equals("") || jTextField7.getText().equals("") || jTextField8.getText().equals("") || jTextField9.getText().equals("") || jTextField10.getText().equals("")) {
+            
+            JOptionPane.showMessageDialog(this, "Por favor ingrese todos los campos");            
+            
+        } else {
+            
+            if (seleccion==0) {
+                
+                Cilindrico cilindrico = new Cilindrico (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
+                agregarTanques.add(cilindrico);
+                
+            } else if (seleccion==1) {
+                
+                Cubico cubico = new Cubico (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
+                agregarTanques.add(cubico);
+                
+            } else if (seleccion==2) {
+                
+                Cubico cubico = new Cubico (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
+                agregarTanques.add(cubico);
+                
+            }
+            
+            
+            Region region = new Region (M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, H1, H2, H3, H4, H5, H6, H7, H8, H9, H10);
+            agregarRegiones.add(region);
+            
+            JOptionPane.showMessageDialog(this, "Tanque y region agregados con exito!");
+            
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
