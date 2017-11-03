@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase GUI con la que el usuario es capaz de agregar un tanque y asignarlo a una region
+ * @author: Oscar Juarez - 17315; Josue Lopez Florian - 17081
+ * @version: 3/11/17
+ * Programacion Orientada a Objetos
  */
 
-/**
- *
- * @author Usuario
- */
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -174,6 +171,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel34.setText("Advertencias:");
 
         jButton1.setText("Agregar Tanque");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Simular Tiempo");
 
@@ -348,6 +350,13 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Agregar agregar = new Agregar();
+        
+        agregar.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
