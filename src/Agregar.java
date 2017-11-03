@@ -2,6 +2,7 @@
 import Laboratorio05.BaseDatos;
 import Laboratorio05.Cilindrico;
 import Laboratorio05.Cubico;
+import Laboratorio05.Ortogonal;
 import Laboratorio05.Region;
 import Laboratorio05.Tanque;
 import java.util.ArrayList;
@@ -488,17 +489,19 @@ public class Agregar extends javax.swing.JFrame {
                 
                 Cubico cubico = new Cubico (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
                 agregarTanques.add(cubico);
+                bd.comprarTanqueCubico(cubico);
                 
             } else if (seleccion==2) {
                 
-                Cubico cubico = new Cubico (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
-                agregarTanques.add(cubico);
+                Ortogonal ortogonal = new Ortogonal (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
+                agregarTanques.add(ortogonal);
+                bd.comprarTanqueOrtogonal(ortogonal);
                 
-            }
-            
+            }            
             
             Region region = new Region (M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, H1, H2, H3, H4, H5, H6, H7, H8, H9, H10);
             agregarRegiones.add(region);
+            bd.agregarRegion(region);
             
             JOptionPane.showMessageDialog(this, "Tanque y region agregados con exito!");
             

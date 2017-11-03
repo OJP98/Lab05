@@ -56,4 +56,20 @@ public class BaseDatos {
         
     }
     
+    public void comprarTanqueOrtogonal(Ortogonal tanque){
+        
+        em.getTransaction().begin();
+        em.persist(tanque);
+        em.getTransaction().commit();
+
+    }  
+    
+    public void comprarTanqueCubico(Cubico tanque){
+        
+        em.getTransaction().begin();
+        em.persist(tanque);
+        em.getTransaction().commit();
+
+    }  
+    
 }
