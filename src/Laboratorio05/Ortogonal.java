@@ -35,6 +35,8 @@ public class Ortogonal extends Tanque implements Serializable {
         setMetros3();
     }
     
+    public Ortogonal(){}
+    
     
     @Override
     /**

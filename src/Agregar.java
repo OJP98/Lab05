@@ -1,4 +1,5 @@
 
+import Laboratorio05.BaseDatos;
 import Laboratorio05.Cilindrico;
 import Laboratorio05.Cubico;
 import Laboratorio05.Region;
@@ -16,10 +17,12 @@ import javax.swing.JOptionPane;
 public class Agregar extends javax.swing.JFrame {
     
     public static ArrayList<Tanque> agregarTanques = new ArrayList<Tanque>();
-    public static ArrayList<Region> agregarRegiones = new ArrayList<Region>(); 
+    public static ArrayList<Region> agregarRegiones = new ArrayList<Region>();     
+    BaseDatos bd = new BaseDatos();
     
     public Agregar() {
         initComponents();
+        
     }
 
     /**
@@ -479,6 +482,7 @@ public class Agregar extends javax.swing.JFrame {
                 
                 Cilindrico cilindrico = new Cilindrico (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
                 agregarTanques.add(cilindrico);
+                bd.comprarTanqueCilindrico(cilindrico);
                 
             } else if (seleccion==1) {
                 

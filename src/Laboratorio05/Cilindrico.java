@@ -31,6 +31,8 @@ public class Cilindrico extends Tanque implements Serializable {
         this.id = id;
     }
     
+    public Cilindrico(){}
+    
     public Cilindrico(String Nid, double Ancho, double Largo, double Profundo) {
         super(Nid, Ancho, Largo, Profundo);                
         setMetros3();

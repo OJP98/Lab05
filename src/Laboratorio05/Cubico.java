@@ -30,6 +30,9 @@ public class Cubico extends Tanque implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public Cubico(){}
+    
     public Cubico(String Nid, double Ancho, double Largo, double Profundo) {
         super(Nid, Ancho, Largo, Profundo);                
         setMetros3();

@@ -19,7 +19,7 @@ public class BaseDatos {
     EntityManager em; //manejador de las entidades en la base de datos
     
     public BaseDatos(){
-        emf = javax.persistence.Persistence.createEntityManagerFactory("TanquePU");
+        emf = javax.persistence.Persistence.createEntityManagerFactory("Laboratorio05PU");
         em = emf.createEntityManager();
         tanque = new Tanque(); //tanque vacio
     }
@@ -39,17 +39,21 @@ public class BaseDatos {
         
     }
     
-    /*
-    public void comprarTanqueCilindrico(String id, double Ancho, double Largo, double Profundo){
+
+    public void comprarTanqueCilindrico(Cilindrico tanque){
         
-        Tanque tanque = new Tanque(id, Ancho, Largo, Profundo);
         em.getTransaction().begin();
         em.persist(tanque);
         em.getTransaction().commit();
+
+    }   
+    
+    public void agregarRegion(Region region) {
         
-        //Hace falta agregar el tanque al arraylist de tanques        
+        em.getTransaction().begin();
+        em.persist(region);
+        em.getTransaction().commit();
         
     }
-    */    
     
 }
