@@ -24,12 +24,23 @@ public class Tanque implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nID;
-    private double porcentaje, capacidad, metros3, ancho, largo, profundo;
-    private int cValvulas;
-    private boolean ocupado;
+    protected String nID;
+    protected double porcentaje, capacidad, metros3, ancho, largo, profundo;
+    protected int cValvulas;
+    protected boolean ocupado;
     
     public Tanque (){}
+    
+    public Tanque(String Nid, double Ancho, double Largo, double Profundo) {
+        nID = Nid;
+        ancho = Ancho;
+        largo = Largo;
+        profundo = Profundo;     
+        porcentaje = 100;
+        metros3 = capacidad;
+        ocupado = true;
+        
+    }
 
     public Long getId() {
         return id;
@@ -41,10 +52,6 @@ public class Tanque implements Serializable {
 
     public double getPorcentaje() {
         return porcentaje;
-    }
-
-    public void setPorcentaje(double porcentaje) {
-        this.porcentaje = porcentaje;
     }
 
     public double getMetros3() {
@@ -59,40 +66,12 @@ public class Tanque implements Serializable {
         return cValvulas;
     }
 
-    public void setcValvulas(int cValvulas) {
-        this.cValvulas = cValvulas;
-    }
-
     public boolean isOcupado() {
         return ocupado;
     }
 
-    public void setOcupado(boolean ocupado) {
-        this.ocupado = ocupado;
-    }
-
-    public void setnID(String nID) {
-        this.nID = nID;
-    }
-
-    public void setAncho(double ancho) {
-        this.ancho = ancho;
-    }
-
-    public void setLargo(double largo) {
-        this.largo = largo;
-    }
-
-    public void setProfundo(double profundo) {
-        this.profundo = profundo;
-    }
-
     public String getnID() {
         return nID;
-    }
-    
-    public void setCapacidad(){
-        
     }
     
     @Override

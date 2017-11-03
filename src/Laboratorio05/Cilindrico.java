@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author Usuario
  */
 @Entity
-public class Cilindrico implements Serializable {
+public class Cilindrico extends Tanque implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,13 +31,24 @@ public class Cilindrico implements Serializable {
         this.id = id;
     }
     
-    /*
+    public Cilindrico(String Nid, double Ancho, double Largo, double Profundo) {
+        super(Nid, Ancho, Largo, Profundo);                
+        setMetros3();
+    }
+    
+    
     @Override
+    /**
+     * Metodo que calcula la capacidad de tanque segun su forma
+     */
     public void setMetros3(){
+        
+        capacidad = (Math.PI)*Math.pow((ancho/2),2)*largo;
+        metros3 = capacidad;
        
     }
-    */
-
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
