@@ -14,6 +14,7 @@ public class Principal extends javax.swing.JFrame {
 
     public static ArrayList<Tanque> mainTanques = new ArrayList<Tanque>();
     public static ArrayList<Region> mainRegiones = new ArrayList<Region>();   
+    Tanque tanque = new Tanque();
     
     public Principal() {
         initComponents();
@@ -70,6 +71,11 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel1.setText("Pagina Principal");
@@ -360,6 +366,21 @@ public class Principal extends javax.swing.JFrame {
         agregar.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        if (mainTanques.size()>0 && mainRegiones.size()>0) {
+            
+            tanque.imprimirTanques(jComboBox1, mainTanques);
+            
+        } else {
+            
+            jComboBox1.removeAllItems();
+            jComboBox1.addItem("No hay tanques agregados al programa");
+            
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

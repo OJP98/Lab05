@@ -47,6 +47,7 @@ public class Ortogonal extends Tanque implements Serializable {
         capacidad = profundo*ancho*largo;
         metros3 = capacidad;
     }
+        
     @Override
     public int hashCode() {
         int hash = 0;

@@ -221,6 +221,11 @@ public class Agregar extends javax.swing.JFrame {
         });
 
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -488,6 +493,7 @@ public class Agregar extends javax.swing.JFrame {
             } else if (seleccion==1) {
                 
                 Cubico cubico = new Cubico (jSpinner1.getValue()+"", (double)jSpinner3.getValue(), (double)jSpinner2.getValue(), (double)jSpinner4.getValue());
+                System.out.println("el ID es: " + jSpinner1.getValue()+"");
                 agregarTanques.add(cubico);
                 bd.comprarTanqueCubico(cubico);
                 
@@ -508,6 +514,16 @@ public class Agregar extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Principal principal = new Principal();
+        
+        principal.setVisible(true);
+        this.setVisible(false);
+        
+        principal.mainTanques = agregarTanques;
+        principal.mainRegiones = agregarRegiones;
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -8,10 +8,12 @@
 package Laboratorio05;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -72,6 +74,22 @@ public class Tanque implements Serializable {
 
     public String getnID() {
         return nID;
+    }
+
+    public void imprimirTanques(JComboBox comboBox, ArrayList<Tanque> lista){
+        
+        comboBox.removeAllItems();
+        int contador = 0;
+        
+        for (Tanque x: lista) {
+            
+            contador++;
+            
+            String ID = x.getnID();
+            comboBox.addItem("Tanque " + contador + ": - " + ID);
+            
+        }
+        
     }
     
     @Override

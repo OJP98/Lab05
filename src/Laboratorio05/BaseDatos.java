@@ -40,10 +40,10 @@ public class BaseDatos {
     }
     
 
-    public void comprarTanqueCilindrico(Cilindrico tanque){
+    public void comprarTanqueCilindrico(Cilindrico cilindrico){
         
         em.getTransaction().begin();
-        em.persist(tanque);
+        em.persist(cilindrico);
         em.getTransaction().commit();
 
     }   
@@ -56,18 +56,18 @@ public class BaseDatos {
         
     }
     
-    public void comprarTanqueOrtogonal(Ortogonal tanque){
+    public void comprarTanqueOrtogonal(Ortogonal ortogonal){
         
         em.getTransaction().begin();
-        em.persist(tanque);
+        em.persist(ortogonal);
         em.getTransaction().commit();
 
     }  
     
-    public void comprarTanqueCubico(Cubico tanque){
+    public void comprarTanqueCubico(Cubico cubico){
         
         em.getTransaction().begin();
-        em.persist(tanque);
+        em.persist(cubico);
         em.getTransaction().commit();
 
     }  
