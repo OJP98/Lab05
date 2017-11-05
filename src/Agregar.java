@@ -440,6 +440,7 @@ public class Agregar extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         
         int seleccion = jComboBox1.getSelectedIndex();
+        jSpinner3.setEnabled(true);
         jSpinner4.setEnabled(true);
         jLabel8.setText("Ancho");
         
@@ -447,6 +448,11 @@ public class Agregar extends javax.swing.JFrame {
             
             jSpinner4.setEnabled(false);
             jLabel8.setText("Diametro");
+            
+        } else if (seleccion==2) {
+            
+            jSpinner3.setEnabled(false);
+            jSpinner4.setEnabled(false);
             
         }
         
@@ -527,27 +533,22 @@ public class Agregar extends javax.swing.JFrame {
             }      
 
             Region region = new Region (M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, H1, H2, H3, H4, H5, H6, H7, H8, H9, H10);
-            agregarRegiones.add(region);
+            region.setNecesidad();
+            agregarRegiones.add(region);            
             bd.agregarRegion(region);                        
 
-            JOptionPane.showMessageDialog(this, "Tanque y region agregados con exito!");                                    
+            JOptionPane.showMessageDialog(this, "Tanque y region agregados con exito!");      
             
-        }
+            Principal principal = new Principal();
         
-        /**
-        agregarRegiones.get(agregarRegiones.size()-1).setNecesidad();
-        double necesidad = agregarRegiones.get(agregarRegiones.size()-1).getNecesidad();
-        agregarTanques.get(agregarTanques.size()-1).setValvulas(necesidad);
-        int valvulas = agregarTanques.get(agregarTanques.size()-1).getcValvulas();
-        int posicion = agregarTanques.size();
-        Date fecha = new Date();
-        
-        Informe informe = new Informe(valvulas, fecha, ("El en tanque " + posicion + ", se abrieron"));  
-        agregarInformes.add(informe);
-        bd.agregarInforme(informe);
-        bd.cerdadBD();
-        * */
-  
+            principal.setVisible(true);
+            this.setVisible(false);
+
+            principal.mainTanques = agregarTanques;
+            principal.mainRegiones = agregarRegiones;
+            principal.mainInformes = agregarInformes;
+            
+        }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

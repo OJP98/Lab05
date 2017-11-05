@@ -88,24 +88,7 @@ public class BaseDatos {
         em.getTransaction().commit();
         
     }
-    
-    /*
-    public void modificarTanqueCubico(double metros3, int valvulas, double porcentaje, double necesidad){
         
-        Query q = em.createQuery("select t from Tanque t where t.metros3 = :metros3");
-        q.setParameter("metros3", metros3);
-        Cubico cubico = (Cubico) q.getSingleResult();
-        if (cubico != null){
-            cubico.usarTanques();
-            cubico.setMetros3();
-            cubico.setValvulas(necesidad);
-            em.getTransaction().begin();
-            em.persist(cubico);
-            em.getTransaction().commit();
-        }        
-    }
-    */
-    
     public void usarTanque(double metros3, double porcentaje, String nID){
         
         Query q = em.createQuery("select t from Tanque t where t.nID = :nID");
@@ -119,10 +102,10 @@ public class BaseDatos {
         }          
     }
     
-    public void abrirTanque(double metros3, int valvulas, double porcentaje, double necesidad){
+    public void abrirTanque(double metros3, int valvulas, double porcentaje, double necesidad, String nID){
         
-        Query q = em.createQuery("select t from Tanque t where t.metros3 = :metros3");
-        q.setParameter("metros3", metros3);
+        Query q = em.createQuery("select t from Tanque t where t.nID = :nID");
+        q.setParameter("nID", nID);
         Tanque tanque = (Tanque) q.getSingleResult();
         if (tanque != null){
             tanque.usarTanques();                
@@ -132,19 +115,6 @@ public class BaseDatos {
             em.persist(tanque);
             em.getTransaction().commit();
         }        
-    }
-    
-    public void modificarNecesidad(double necesidad){
-        
-        Query q = em.createQuery("select r from Region r where r.necesidad = :necesidad");
-        q.setParameter("necesidad", necesidad);
-        Region region = (Region) q.getSingleResult();
-        if (region != null) {
-            region.setNecesidad();
-            em.getTransaction().begin();
-            em.persist(region);
-            em.getTransaction().commit();
-        }                
     }
     
     public void cerrarTanque(String nID){

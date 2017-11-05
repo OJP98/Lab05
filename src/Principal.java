@@ -8,6 +8,7 @@ import Laboratorio05.Region;
 import Laboratorio05.Tanque;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  * Clase GUI con la que el usuario es capaz de agregar un tanque y asignarlo a una region
@@ -78,7 +79,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -206,10 +206,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel33.setText("Municipio 10");
 
-        jLabel34.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel34.setText("Advertencias:");
-
         jButton1.setText("Agregar Tanque");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,17 +250,6 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -302,14 +287,25 @@ public class Principal extends javax.swing.JFrame {
                                             .addComponent(jLabel20)
                                             .addComponent(jLabel26)
                                             .addComponent(jLabel22))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE))))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(27, 27, 27)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton3)
+                                .addComponent(jButton4)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,10 +322,8 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel34)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addGap(109, 109, 109))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(43, 43, 43)
@@ -415,12 +409,20 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (mainTanques.size()<=10) {
+        
         Agregar agregar = new Agregar();
         
         agregar.agregarTanques = mainTanques;
         agregar.agregarRegiones = mainRegiones;
         agregar.setVisible(true);
         this.setVisible(false);
+        
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "El numero maximo de tanques ha sido alcanzado");
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -429,7 +431,7 @@ public class Principal extends javax.swing.JFrame {
                 for (Informe x: mainInformes) {
 
                     String nInforme = x.hacerInforme();
-                    jTextArea1.setText(nInforme);
+                    jTextArea1.setText(jTextArea1.getText() + nInforme);
 
                 }            
             }
@@ -459,7 +461,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (mainTanques.size()>0 && jComboBox1.getSelectedIndex()!=0) {
+       try {
             
             int index = jComboBox1.getSelectedIndex()-1;            
             
@@ -473,15 +475,22 @@ public class Principal extends javax.swing.JFrame {
             if (mainTanques.get(index) instanceof Cubico) {
               jLabel4.setText("Forma: " + "Cubico");  
             }
+            
+            double m3 = (double) Math.round((mainTanques.get(index).getMetros3())*100)/100;
+            
             jLabel5.setText("Valvulas Abiertas: " + mainTanques.get(index).getcValvulas());
-            jLabel6.setText("Agua disponible: " + mainTanques.get(index).getMetros3() + " m^3");
+            jLabel6.setText("Agua disponible: " + m3 + " m^3");
             jLabel19.setText("Porcentaje: " + mainTanques.get(index).getPorcentaje() + "%");    
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(this, "Seleccione una posición válida");
             
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (mainRegiones.size()>0 && jComboBox2.getSelectedIndex()!=0) {
+       try {
             
             int index = jComboBox2.getSelectedIndex()-1;
             
@@ -506,7 +515,14 @@ public class Principal extends javax.swing.JFrame {
             jLabel28.setText(mainRegiones.get(index).getHabitantes()[7]+"");
             jLabel30.setText(mainRegiones.get(index).getHabitantes()[8]+"");
             jLabel32.setText(mainRegiones.get(index).getHabitantes()[9]+"");
+            
+            double litros = (double) Math.round((mainTanques.get(index).getMetros3()*1000)*100)/100;
+            jLabel9.setText("Agua disponible: " + litros + " litros");
                                                 
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(this, "Seleccione una posición válida");
+            
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -521,31 +537,32 @@ public class Principal extends javax.swing.JFrame {
                 contador++;
                 double necesidad = mainRegiones.get(contador).getNecesidad();
                 
-                if (x.getPorcentaje()>25 && x.getPorcentaje()!=100) {
+                if (x.getPorcentaje()>25 && x.isOcupado()==true) {
                     
-                    //x.usarTanques();
+                    x.usarTanques();
                     bd.usarTanque(x.getMetros3(), x.getPorcentaje(), x.getnID());                    
                     
-                } else if (x.getPorcentaje()<=10) {
-                    
+                } else if (x.getPorcentaje()<=10 && x.isOcupado()==true) {
+                                       
                     x.setOcupado(false);
-                    Informe informe = new Informe(x.getcValvulas(), new Date(), ("---->ADVERTENCIA: \n" + "En el tanque " + (contador+1) + ", se cerraron las"));  
+                    x.setValvulas(0);
+                    Informe informe = new Informe(x.getcValvulas(), new Date(), ("----->ADVERTENCIA<----- \n" + "En el tanque " + (contador+1) + ", se cerraron las"));  
                     mainInformes.add(informe);
                     bd.agregarInforme(informe);
                     bd.cerrarTanque(x.getnID());
                 
-                } else if (x.getPorcentaje()>10 && x.getPorcentaje()<=25) {
+                } else if (x.getPorcentaje()>18 && x.getPorcentaje()<25) {
                     
-                    //x.usarTanques();
+                    x.usarTanques();
                     bd.usarTanque(x.getMetros3(), x.getPorcentaje(), x.getnID());
+                    
                     Informe informe = new Informe(x.getcValvulas(), new Date(), ("El tanque " + (contador+1) + " tiene menos del 25% de agua... \n" + "Se recomienda estar pendiente de las"));  
                     mainInformes.add(informe);
                     bd.agregarInforme(informe);
                      
-                } else {
+                } else if (x.getPorcentaje()==100){
                     
-                    //x.usarTanques();
-                    //x.setMetros3();
+                    x.usarTanques();
                     x.setOcupado(true);
                     x.setValvulas(necesidad);
                     
@@ -553,14 +570,13 @@ public class Principal extends javax.swing.JFrame {
                     mainInformes.add(informe);
                     
                     bd.agregarInforme(informe);
-                    bd.modificarNecesidad(necesidad);
-                    bd.abrirTanque(x.getMetros3(), x.getcValvulas(), x.getPorcentaje(), necesidad);
+                    bd.abrirTanque(x.getMetros3(), x.getcValvulas(), x.getPorcentaje(), necesidad, x.getnID());
                     
-                }  
+                }                 
             } 
         }
         
-        
+        //Imprime los informes que se realizan en la simulacion
         if (mainInformes.size()>0) {
             
             jTextArea1.setText("");
@@ -571,8 +587,29 @@ public class Principal extends javax.swing.JFrame {
             }            
         }
         
-        
-        
+        //Imprime los datos actualizados de los tanques.
+        if (mainTanques.size()>0 && jComboBox1.getSelectedIndex()!=0) {
+            
+            int index = jComboBox1.getSelectedIndex()-1;            
+            
+            jLabel2.setText("ID: " + mainTanques.get(index).getnID());
+            if (mainTanques.get(index) instanceof Cilindrico) {
+              jLabel4.setText("Forma: " + "Cilindrico");  
+            }
+            if (mainTanques.get(index) instanceof Ortogonal) {
+              jLabel4.setText("Forma: " + "Ortogonal");  
+            }
+            if (mainTanques.get(index) instanceof Cubico) {
+              jLabel4.setText("Forma: " + "Cubico");  
+            }
+            
+            double m3 = (double) Math.round((mainTanques.get(index).getMetros3())*100)/100;
+            
+            jLabel5.setText("Valvulas Abiertas: " + mainTanques.get(index).getcValvulas());
+            jLabel6.setText("Agua disponible: " + m3 + " m^3");
+            jLabel19.setText("Porcentaje: " + mainTanques.get(index).getPorcentaje() + "%");    
+            
+        }                        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -644,7 +681,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

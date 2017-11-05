@@ -53,7 +53,7 @@ public class Informe implements Serializable {
         
         String informe = "";
         
-        informe = fecha+": \n" + cambio + " " + valvulas + " valvulas \n";
+        informe = "\n" + fecha+": \n" + cambio + " " + valvulas + " valvulas \n";
         
         return informe;
         

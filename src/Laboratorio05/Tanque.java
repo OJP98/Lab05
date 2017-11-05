@@ -78,9 +78,21 @@ public class Tanque implements Serializable {
     
     public void setValvulas(double necesidad){
         
-        double porcentaje = ((necesidad*100)/(metros3*1000))/10;
+        double porcentaje = ((necesidad*100)/(metros3*1000))/10;        
         
-        cValvulas = (int) Math.round(porcentaje);
+        int total = (int) Math.round(porcentaje);
+        
+        if (total == 0) {
+            cValvulas = 0;
+            
+        } else if (total>10) {
+            cValvulas=10;
+            
+        } else {
+            
+            cValvulas=total;
+            
+        }
         
     }
     
@@ -108,7 +120,7 @@ public class Tanque implements Serializable {
         
         Random generadorRandom = new Random();
         
-        int numRandom = generadorRandom.nextInt(15);
+        int numRandom = generadorRandom.nextInt(5-1)+1;
         
         porcentaje = porcentaje - numRandom;
         
