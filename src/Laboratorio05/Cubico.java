@@ -35,7 +35,8 @@ public class Cubico extends Tanque implements Serializable {
     
     public Cubico(String Nid, double Ancho, double Largo, double Profundo) {
         super(Nid, Ancho, Largo, Profundo);                
-        setMetros3();
+        capacidad = profundo*ancho*largo;
+        metros3 = capacidad;
     }
     
     

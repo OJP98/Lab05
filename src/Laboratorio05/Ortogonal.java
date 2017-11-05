@@ -32,7 +32,8 @@ public class Ortogonal extends Tanque implements Serializable {
     }
     public Ortogonal(String Nid, double Ancho, double Largo, double Profundo) {
         super(Nid, Ancho, Largo, Profundo);                
-        setMetros3();
+        capacidad = profundo * ancho * largo;
+        metros3 = capacidad;
     }
     
     public Ortogonal(){}
@@ -44,7 +45,7 @@ public class Ortogonal extends Tanque implements Serializable {
      */
     public void setMetros3(){
         
-        capacidad = profundo*ancho*largo;
+        capacidad = profundo * ancho * largo;
         metros3 = capacidad;
     }
         

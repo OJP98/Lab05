@@ -8,6 +8,7 @@
     <class>Laboratorio05.BaseDatos</class>
     <class>Laboratorio05.Ortogonal</class>
     <class>Laboratorio05.Informe</class>
+    <class>Laboratorio05.Cubico</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/lab05bd?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

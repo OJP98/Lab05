@@ -7,26 +7,33 @@ package Laboratorio05;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 
-/**
- *
- * @author JUMPSTONIK
- */
 @Entity
 public class Informe implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id;    
+    private int valvulas;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     private String cambio;
+    
+    public Informe(){}
+
+    public Informe(int valvulas, Date fecha, String cambio) {
+        this.valvulas = valvulas;
+        this.fecha = fecha;
+        this.cambio = cambio;
+    }        
+    
     public Long getId() {
         return id;
     }
@@ -40,13 +47,16 @@ public class Informe implements Serializable {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
-    }
-    public Informe(){
-        fecha = new Date();
-        //cambio = ; 
-    }
+    }    
+    
     public String hacerInforme(){
-        return this.fecha + "ha sido la cantidad de valvulas que se abrireron";
+        
+        String informe = "";
+        
+        informe = fecha+": \n" + cambio + " " + valvulas + " valvulas \n";
+        
+        return informe;
+        
     }
 
     @Override

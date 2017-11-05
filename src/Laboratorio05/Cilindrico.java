@@ -35,7 +35,8 @@ public class Cilindrico extends Tanque implements Serializable {
     
     public Cilindrico(String Nid, double Ancho, double Largo, double Profundo) {
         super(Nid, Ancho, Largo, Profundo);                
-        setMetros3();
+        capacidad = (Math.PI)*Math.pow((ancho/2),2)*largo;
+        metros3 = capacidad;
     }
     
     

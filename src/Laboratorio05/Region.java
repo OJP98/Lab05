@@ -9,10 +9,13 @@ package Laboratorio05;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.stream.IntStream;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.swing.JComboBox;
 
 @Entity
 public class Region implements Serializable {
@@ -23,11 +26,13 @@ public class Region implements Serializable {
     private Long id;
     private String[] Municipios;
     private int[] Habitantes;
+    private double necesidad;
     
     public Region(){}
     
     public Region(String M1, String M2, String M3, String M4, String M5, String M6, String M7, String M8, String M9, String M10, int H1, int H2, int H3, int H4, int H5, int H6, int H7, int H8, int H9, int H10) {                
         
+        necesidad = 0;
         Municipios = new String[]{M1, M2, M3, M4, M5, M6, M7, M8, M9, M10};
         Habitantes = new int[]{H1, H2, H3, H4, H5, H6, H7, H8, H9, H10};
         
@@ -40,6 +45,41 @@ public class Region implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }        
+    
+    public void imprimirRegiones(JComboBox comboBox, ArrayList<Region> lista){
+        
+        int contador = 0;
+        comboBox.removeAllItems();
+        comboBox.addItem("Seleccione la region");
+        
+        for (Region x: lista) {
+            
+            contador++;
+            comboBox.addItem("Region " + contador);
+            
+        }              
+    }
+    
+    public void setNecesidad(){
+        
+        int tHabitantes = IntStream.of(Habitantes).sum();
+        
+        necesidad = tHabitantes*137;
+        
+    }
+    
+    public double getNecesidad(){
+        return necesidad;
+    }
+    
+    public String[] getMunicipios() {        
+        return Municipios;
+        
+    }
+    
+    public int[] getHabitantes(){
+        return Habitantes;
+    }
 
     @Override
     public int hashCode() {

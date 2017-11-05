@@ -14,11 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.swing.JComboBox;
+import java.util.Random;
 
-/**
- *
- * @author Usuario
- */
 @Entity
 public class Tanque implements Serializable {
 
@@ -29,7 +26,7 @@ public class Tanque implements Serializable {
     protected String nID;
     protected double porcentaje, capacidad, metros3, ancho, largo, profundo;
     protected int cValvulas;
-    protected boolean ocupado;
+    protected boolean ocupado;    
     
     public Tanque (){}
     
@@ -40,8 +37,7 @@ public class Tanque implements Serializable {
         profundo = Profundo;     
         porcentaje = 100;
         metros3 = capacidad;
-        ocupado = true;
-        
+        ocupado = false;        
     }
 
     public Long getId() {
@@ -71,14 +67,31 @@ public class Tanque implements Serializable {
     public boolean isOcupado() {
         return ocupado;
     }
+    
+    public void setOcupado(boolean valor){
+        ocupado = valor ;        
+    }
 
     public String getnID() {
         return nID;
+    }
+    
+    public void setValvulas(double necesidad){
+        
+        double porcentaje = ((necesidad*100)/(metros3*1000))/10;
+        
+        cValvulas = (int) Math.round(porcentaje);
+        
+    }
+    
+    public void setValulvas() {
+        cValvulas = cValvulas;
     }
 
     public void imprimirTanques(JComboBox comboBox, ArrayList<Tanque> lista){
         
         comboBox.removeAllItems();
+        comboBox.addItem("Seleccione el tanque");
         int contador = 0;
         
         for (Tanque x: lista) {
@@ -86,9 +99,22 @@ public class Tanque implements Serializable {
             contador++;
             
             String ID = x.getnID();
-            comboBox.addItem("Tanque " + contador + ": - " + ID);
+            comboBox.addItem("Tanque " + contador + ", ID: " + ID);
             
-        }
+        }        
+    }
+    
+    public double usarTanques(){
+        
+        Random generadorRandom = new Random();
+        
+        int numRandom = generadorRandom.nextInt(15);
+        
+        porcentaje = porcentaje - numRandom;
+        
+        metros3 = (porcentaje*metros3)/100;       
+        
+        return porcentaje;
         
     }
     
