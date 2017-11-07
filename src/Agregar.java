@@ -11,7 +11,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
- * Clase GUI con la que el usuario es introducido al programa
+ * Clase GUI con la que el usuario puede agregar un tanque al programa
  * @author: Oscar Juarez - 17315; Josue Lopez Florian - 17081
  * @version: 3/11/17
  * Programacion Orientada a Objetos

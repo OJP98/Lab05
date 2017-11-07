@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Clase hija de Tanque, posee metodos unicos
+ * @author: Oscar Juarez - 17315; Josue Lopez Florian - 17081
+ * @version: 3/11/17
+ * Programacion Orientada a Objetos
  */
 package Laboratorio05;
 
