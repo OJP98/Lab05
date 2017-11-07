@@ -37,15 +37,25 @@ public class Region implements Serializable {
         Habitantes = new int[]{H1, H2, H3, H4, H5, H6, H7, H8, H9, H10};
         
     }
-
+    /**
+     * esta funcion devulve el id
+     * @return el id
+     */
     public Long getId() {
         return id;
     }
-
+    /**
+     * esta funcion pone su id al objeto
+     * @param id varaible el cual pasara el id el cual se le dara al objeto
+     */
     public void setId(Long id) {
         this.id = id;
     }        
-    
+    /**
+     * con esta funcion se imprime la informacion dentro del combobox de las regiones.
+     * @param comboBox combobox el cual sera agregado sus datos de la lista
+     * @param lista lista la cual imprimira sus valores dentro del combobox
+     */
     public void imprimirRegiones(JComboBox comboBox, ArrayList<Region> lista){
         
         int contador = 0;
@@ -59,7 +69,9 @@ public class Region implements Serializable {
             
         }              
     }
-    
+    /**
+     * en esta funcion se da el valor a la la variable necesidad por la cantidad de habitantes del municipio
+     */
     public void setNecesidad(){
         
         int tHabitantes = IntStream.of(Habitantes).sum();
@@ -67,16 +79,25 @@ public class Region implements Serializable {
         necesidad = tHabitantes*137;
         
     }
-    
+    /**
+     * esta funcion nos devuelve el valor de la necesidad
+     * @return valor de la variable necesidad
+     */
     public double getNecesidad(){
         return necesidad;
     }
-    
+    /**
+     * esta funcion devuelve la lista de los municipios
+     * @return lista de los municipios registrados
+     */
     public String[] getMunicipios() {        
         return Municipios;
         
     }
-    
+    /**
+     * con esta funcion se te devuelve la lista de cada habitante segun su municipio
+     * @return devuelve la lsita de lso habitantes
+     */
     public int[] getHabitantes(){
         return Habitantes;
     }

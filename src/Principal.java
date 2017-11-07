@@ -85,6 +85,7 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -206,6 +207,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel33.setText("Municipio 10");
 
+        jButton1.setBackground(new java.awt.Color(102, 204, 0));
         jButton1.setText("Agregar Tanque");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,6 +215,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(0, 153, 255));
         jButton2.setText("Simular Tiempo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,6 +241,9 @@ public class Principal extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jLabel34.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel34.setText("TOTAL de valvulas de tanques cilindricos abiertas:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,7 +293,8 @@ public class Principal extends javax.swing.JFrame {
                                             .addComponent(jLabel20)
                                             .addComponent(jLabel26)
                                             .addComponent(jLabel22))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)))))
+                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -342,7 +349,9 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -426,6 +435,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        int totalValv = tanque.totalValvulasC(mainTanques);
+        jLabel34.setText("TOTAL de valvulas de tanques cilindricos abiertas: " + totalValv+"");
+        
         if (mainInformes.size()>0) {
 
                 for (Informe x: mainInformes) {
@@ -437,9 +450,10 @@ public class Principal extends javax.swing.JFrame {
             }
     
         if (mainTanques.size()>0) {
-                        
+                                    
             tanque.imprimirTanques(jComboBox1, mainTanques);
             region.imprimirRegiones(jComboBox2, mainRegiones);
+            
             
         } else {
             
@@ -461,9 +475,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       try {
+
+        
+        
+        try {
             
-            int index = jComboBox1.getSelectedIndex()-1;            
+            int index = jComboBox1.getSelectedIndex()-1;    
+            int totalValv = tanque.totalValvulasC(mainTanques);
             
             jLabel2.setText("ID: " + mainTanques.get(index).getnID());
             if (mainTanques.get(index) instanceof Cilindrico) {
@@ -480,7 +498,8 @@ public class Principal extends javax.swing.JFrame {
             
             jLabel5.setText("Valvulas Abiertas: " + mainTanques.get(index).getcValvulas());
             jLabel6.setText("Agua disponible: " + m3 + " m^3");
-            jLabel19.setText("Porcentaje: " + mainTanques.get(index).getPorcentaje() + "%");    
+            jLabel19.setText("Porcentaje: " + mainTanques.get(index).getPorcentaje() + "%"); 
+            jLabel34.setText("TOTAL de valvulas de tanques cilindricos abiertas: " + totalValv+"");            
             
         } catch (Exception e) {
             
@@ -528,6 +547,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        int totalValv = tanque.totalValvulasC(mainTanques);
+        jLabel34.setText("TOTAL de valvulas de tanques cilindricos abiertas: " + totalValv+"");
+        
         if (mainTanques.size()>0) {
             
             int contador = -1;
@@ -543,15 +565,15 @@ public class Principal extends javax.swing.JFrame {
                     bd.usarTanque(x.getMetros3(), x.getPorcentaje(), x.getnID());                    
                     
                 } else if (x.getPorcentaje()<=10 && x.isOcupado()==true) {
-                                       
-                    x.setOcupado(false);
-                    x.setValvulas(0);
+                                                           
                     Informe informe = new Informe(x.getcValvulas(), new Date(), ("----->ADVERTENCIA<----- \n" + "En el tanque " + (contador+1) + ", se cerraron las"));  
                     mainInformes.add(informe);
+                    x.setOcupado(false);
+                    x.setValvulas(0);
                     bd.agregarInforme(informe);
                     bd.cerrarTanque(x.getnID());
                 
-                } else if (x.getPorcentaje()>18 && x.getPorcentaje()<25) {
+                } else if (x.getPorcentaje()>18 && x.getPorcentaje()<=25) {
                     
                     x.usarTanques();
                     bd.usarTanque(x.getMetros3(), x.getPorcentaje(), x.getnID());
@@ -572,7 +594,13 @@ public class Principal extends javax.swing.JFrame {
                     bd.agregarInforme(informe);
                     bd.abrirTanque(x.getMetros3(), x.getcValvulas(), x.getPorcentaje(), necesidad, x.getnID());
                     
-                }                 
+                } else if (x.getPorcentaje()>0) {
+                    
+                    x.usarTanques();
+                    bd.usarTanque(x.getMetros3(), x.getPorcentaje(), x.getnID());                    
+                    
+                }
+                
             } 
         }
         
@@ -590,9 +618,10 @@ public class Principal extends javax.swing.JFrame {
         //Imprime los datos actualizados de los tanques.
         if (mainTanques.size()>0 && jComboBox1.getSelectedIndex()!=0) {
             
-            int index = jComboBox1.getSelectedIndex()-1;            
+            int index = jComboBox1.getSelectedIndex()-1;                                    
             
             jLabel2.setText("ID: " + mainTanques.get(index).getnID());
+            
             if (mainTanques.get(index) instanceof Cilindrico) {
               jLabel4.setText("Forma: " + "Cilindrico");  
             }
@@ -681,6 +710,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

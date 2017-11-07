@@ -39,50 +39,82 @@ public class Tanque implements Serializable {
         metros3 = capacidad;
         ocupado = false;        
     }
-
+    /**
+     * esta funcion devulve el id
+     * @return el id
+     */
     public Long getId() {
         return id;
     }
-
+    /**
+     * esta funcion pone su id al objeto
+     * @param id varaible el cual pasara el id el cual se le dara al objeto
+     */
     public void setId(Long id) {
         this.id = id;
     }
-
+    /**
+     * esta funcion permite obtener el valor de la variable porcentaje
+     * @return el valor del porcentaje
+     */
     public double getPorcentaje() {
         return porcentaje;
     }
-
+    /**
+     * esta fucnion permite obtener el valor de los metros cubicos aun disponibles en el tanque
+     * @return valor en metros cubicos en el tanque
+     */
     public double getMetros3() {
         return metros3;
     }
-
+    /**
+     * esta funcion es para un override de lso metros cubicos
+     */
     public void setMetros3() {
 
     }
-
+    /**
+     * con esta funcion la obtencion dle valor de cuantas valvulas tiene el tanque conectados.
+     * @return la cantidad de valvulas conectadas
+     */
     public int getcValvulas() {
         return cValvulas;
     }
-
+    /**
+     * esta funcion devuleve el estado del tanque
+     * @return esta del tanque
+     */
     public boolean isOcupado() {
         return ocupado;
     }
-    
+    /**
+     * esta funcion pone el valor del estado del tanque
+     * @param valor 
+     */
     public void setOcupado(boolean valor){
         ocupado = valor ;        
     }
-
+    /**
+     * esta funcion devuelve el id del tanque
+     * @return id del tanque
+     */
     public String getnID() {
         return nID;
     }
-    
+    /**
+     * esta funcion le dara su valor de a las valvular con su necesidad
+     * @param necesidad cantidad de agua que debe consumir.
+     */
     public void setValvulas(double necesidad){
         
         double porcentaje = ((necesidad*100)/(metros3*1000))/10;        
         
         int total = (int) Math.round(porcentaje);
         
-        if (total == 0) {
+        if (total == 0 && isOcupado()==true) {
+            cValvulas = 1;
+            
+        } else if (!isOcupado()) {
             cValvulas = 0;
             
         } else if (total>10) {
@@ -95,11 +127,17 @@ public class Tanque implements Serializable {
         }
         
     }
-    
+    /**
+     * iguala la cantidad de valvulas a la cantidad de valvulas
+     */
     public void setValulvas() {
         cValvulas = cValvulas;
     }
-
+    /**
+     * esta funcion imprime en el combobox los valores dentro de la lista de tanques.
+     * @param comboBox combobox el cual se le agregara en el cada tnqeu que hay.
+     * @param lista lista de los tanque que hay.
+     */
     public void imprimirTanques(JComboBox comboBox, ArrayList<Tanque> lista){
         
         comboBox.removeAllItems();
@@ -115,7 +153,10 @@ public class Tanque implements Serializable {
             
         }        
     }
-    
+    /**
+     * esta funcion permitira ver la cantidad de agua que fue usada del tanque de manera aleatoria
+     * @return valor que tiene en porcentaje el taque
+     */
     public double usarTanques(){
         
         Random generadorRandom = new Random();
@@ -128,6 +169,27 @@ public class Tanque implements Serializable {
         
         return porcentaje;
         
+    }
+    
+    /**
+     * Metodo que calcula la cantidad total de valvulas de tanques cilindricos que estan funcionando
+     * @param lista: La lista de los tanques
+     * @return 
+     */
+    public int totalValvulasC(ArrayList<Tanque> lista){
+        
+        int totalValvulas = 0;
+        
+        for (Tanque x: lista) {
+            
+            if (x instanceof Cilindrico) {
+                
+                totalValvulas = totalValvulas + x.getcValvulas();
+                
+            }            
+        }
+        
+        return totalValvulas;
     }
     
     @Override
